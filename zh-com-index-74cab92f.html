@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>稳定入口 · 说明页 | leyu.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f9fc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: #1c2e3a;
+            line-height: 1.75;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-wrap {
+            max-width: 820px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 网格卡片骨架 – 细腻蓝绿 */
+        .grid-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 6px 18px rgba(0, 60, 60, 0.04), 0 2px 6px rgba(20, 70, 60, 0.02);
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid rgba(30, 130, 110, 0.08);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .grid-card:hover {
+            box-shadow: 0 10px 28px rgba(18, 100, 80, 0.06);
+        }
+
+        .hero-section {
+            background: linear-gradient(145deg, #e6f3f0 0%, #d4ebe7 100%);
+            border: 1px solid rgba(40, 130, 115, 0.12);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0a2e2a;
+            margin-bottom: 0.4rem;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #2b5350;
+            font-weight: 430;
+            border-left: 4px solid #2e8b7a;
+            padding-left: 1rem;
+            margin: 0.6rem 0 0.2rem 0;
+        }
+
+        .article-title {
+            font-size: 1.7rem;
+            font-weight: 550;
+            color: #0b3d38;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-line {
+            font-size: 0.9rem;
+            color: #547a75;
+            border-bottom: 1px dashed #bdd6d1;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.5rem;
+        }
+
+        .meta-line span::before {
+            content: "· ";
+            color: #3c8a7a;
+            font-weight: 300;
+        }
+
+        .meta-line span:first-child::before {
+            content: "";
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            background: #f0f9f5;
+            padding: 0.9rem 1.3rem;
+            border-radius: 16px;
+            color: #1d443e;
+            margin-bottom: 1.6rem;
+            border-left: 5px solid #2e8f7a;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .pull-quote {
+            background: #eef6f3;
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            font-style: normal;
+            font-weight: 450;
+            color: #0b4a3f;
+            margin: 1.6rem 0;
+            border: 1px solid #c7e0da;
+            box-shadow: inset 0 1px 4px rgba(30, 90, 75, 0.02);
+        }
+
+        .pull-quote::before {
+            content: "💡 ";
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 1.6rem 0 0.8rem;
+        }
+
+        .feature-item {
+            background: #fafdfb;
+            border: 1px solid #d8eae4;
+            border-radius: 18px;
+            padding: 1.2rem 1.2rem 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.05rem;
+            font-weight: 550;
+            color: #0e5b4c;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: #2b5a50;
+        }
+
+        .cta-sentence {
+            background: #e1f1ec;
+            border-radius: 40px;
+            padding: 0.9rem 1.8rem;
+            display: inline-block;
+            font-size: 1.05rem;
+            margin: 0.2rem 0 0.6rem;
+            border: 1px solid #b2d3cb;
+        }
+
+        .faq-mini {
+            margin-top: 1rem;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #1b5448;
+            margin: 1rem 0 0.2rem 0;
+        }
+
+        .faq-a {
+            padding-left: 1rem;
+            border-left: 2px solid #83bfb0;
+            margin-bottom: 0.8rem;
+            color: #1e3e38;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #527a71;
+            border-top: 1px solid #d2e3dd;
+            padding-top: 1.5rem;
+            margin-top: 1.2rem;
+        }
+
+        a {
+            color: #1b7a64;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid rgba(35, 130, 105, 0.2);
+            transition: border-color 0.15s;
+        }
+
+        a:hover {
+            border-bottom-color: #1b7a64;
+        }
+
+        .inline-link-simple {
+            border-bottom-style: solid;
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 500px) {
+            body {
+                padding: 0.9rem;
+            }
+            .grid-card {
+                padding: 1.3rem 1.1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .article-title {
+                font-size: 1.4rem;
+            }
+            .lead {
+                font-size: 1rem;
+                padding: 0.7rem 1rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .pull-quote {
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .meta-line {
+                flex-direction: column;
+                gap: 0.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- Hero / 标题 简洁博客式 -->
+    <div class="grid-card hero-section">
+        <h1>leyu.com · 稳定入口说明</h1>
+        <div class="subhead">整理自日常访问记录与页面结构笔记</div>
+        <div style="margin-top: 0.6rem; font-size: 0.95rem; color: #2d665c;">
+            <span>🕊️ 清晰 · 平实 · 一篇说明</span>
+        </div>
+    </div>
+
+    <!-- 文章主体：标题、导语、多段正文、引用 -->
+    <div class="grid-card">
+        <div class="article-title">关于入口与页面结构的几点笔记</div>
+        <div class="meta-line">
+            <span>2025 · 整理</span>
+            <span>锚点说明</span>
+            <span>版次 a2</span>
+        </div>
+        <div class="lead">
+            如果你是第一次了解这个站点，或者希望找到一个相对清晰的访问起点，下面几段内容或许能帮你节省一点时间。这里不堆砌功能列表，只描述我看到的页面布局和常用路径。
+        </div>
+
+        <p>
+            从一个稳定的入口开始，往往比反复搜索更省力。<a href="https://zh-com-leyu.com">leyu.com</a> 的首页结构比较规整，顶部导航区通常放置了主要模块入口，中部是内容卡片或信息流，底部有辅助链接和备案信息。整体色调偏清爽，关键操作按钮使用了蓝绿色系，辨识度较高。
+        </p>
+        <p>
+            就个人使用体验而言，每次加载页面的速度在合理范围内，没有出现频繁的布局跳动。如果你习惯先浏览再操作，首页的导航逻辑基本符合直觉——鼠标悬停或点击时会有轻微反馈，菜单展开后选项分组清晰。
+        </p>
+
+        <div class="pull-quote">
+            提示：部分页面可能根据登录状态展示不同内容模块，未登录时可见的入口相对精简。
+        </div>
+
+        <p>
+            另外，页面底部通常有一个简单的站点地图或常用链接聚合区，这对我快速定位“帮助中心”或“条款说明”很有帮助。如果你需要了解更具体的服务范围，直接访问 <a href="https://zh-com-leyu.com">leyu.com</a> 后使用页面内搜索（如果有）或浏览主导航即可。
+        </p>
+
+        <!-- 特点卡片网格 (蓝绿点缀) -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>🌿 导航层次</h3>
+                <p>一级分类不超过七个，次级菜单采用悬浮展开，逻辑清晰。</p>
+            </div>
+            <div class="feature-item">
+                <h3>🧊 响应式适配</h3>
+                <p>在手机浏览器上卡片自动堆叠，字体缩放自然，按钮触控区域足够。</p>
+            </div>
+            <div class="feature-item">
+                <h3>📋 内容区块</h3>
+                <p>首页以摘要卡片为主，图文比例均衡，加载速度表现良好。</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 0.6rem;">
+            以上观察基于近期的多次访问，页面细节可能会随运营调整而略有变化。如果你发现某个模块位置与描述不符，通常是因为版本更新，而非入口失效。
+        </p>
+    </div>
+
+    <!-- 第二块: 场景与FAQ摘要 -->
+    <div class="grid-card">
+        <div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+            <span style="font-weight: 550; font-size: 1.25rem; color: #175b4d;">▸ 常见场景与简要说明</span>
+            <span style="font-size: 0.85rem; color: #547f73;">基于页面结构推断</span>
+        </div>
+
+        <div class="faq-mini">
+            <div class="faq-q">• 想了解服务内容，从哪里看比较快？</div>
+            <div class="faq-a">首页中部通常会展示几类主要服务卡片，点击即进入详情页。也可以使用顶部导航的“服务”或“产品”分类。</div>
+
+            <div class="faq-q">• 页面加载时部分资源延迟怎么办？</div>
+            <div class="faq-a">可尝试刷新或检查网络连接。站点本身使用了常规 CDN 加速，多数地区加载正常。如果持续较慢，建议稍后再试。</div>
+
+            <div class="faq-q">• 移动端和桌面端内容一致吗？</div>
+            <div class="faq-a">核心内容一致，移动端布局会变为单列，部分次要模块默认折叠，保持浏览清爽。</div>
+        </div>
+
+        <div style="margin-top: 1.2rem; background: #eef5f2; border-radius: 18px; padding: 0.7rem 1.2rem;">
+            <span style="font-weight: 460;">📌 如果你需要直接访问，这里是一个稳定的地址：</span>
+            <span style="display: inline-block; margin-left: 0.3rem;"><a href="https://zh-com-leyu.com" style="font-weight: 550;">leyu.com</a></span>
+            <span style="font-size: 0.9rem; color: #38665b;">（当前说明页即以此入口为参照）</span>
+        </div>
+    </div>
+
+    <!-- 最后的访问句 / 结尾 -->
+    <div class="grid-card" style="background: #ecf6f2;">
+        <p style="margin-bottom: 0.4rem; font-weight: 430;">
+            这篇说明页从稳定入口和页面结构的角度整理了一些信息，希望对你快速了解 <a href="https://zh-com-leyu.com">leyu.com</a> 有所帮助。
+        </p>
+        <p style="margin-bottom: 0; color: #285b4e;">
+            如果你习惯先浏览再决策，直接打开首页看看布局和分类，会比文字描述更直观。
+        </p>
+    </div>
+
+    <div class="footer-note">
+        <span>说明页 · 基于公开页面结构整理  |  内容仅供参考</span>
+    </div>
+</div>
+</body>
+</html>
